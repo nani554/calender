@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>calender</title>
+	<link rel='stylesheet' href='../jquery-ui/jquery-ui.css'>
+</head>
+<body>
+	<input type='date' min='1975-09-21' id='dateBroh'>
+	<script src='jquery-3.1.1.js'></script>
+	<script src='jquery-ui/jquery-ui.js'></script>
+	<script>
+		
+			$(window).ready(
+			function(){
+			  var date = new Date();
+			  
+			  var month = date.getMonth() + 1;
+			  var day = date.getDate()-1;
+			  var year = date.getFullYear();
+			  if(month < 10)
+			      month = '0' + month.toString();
+			  if(day < 10)
+			      day = '0' + day.toString();	  
+			  var maxDate = year + '-' + month + '-' + day;
+
+			  $('#dateBroh').attr('max', maxDate);
+
+
+			  if($("#dateBroh")[0].type != 'date'){
+			  $("#dateBroh").datepicker({
+			    dateFormat:"yy-mm-dd",
+			    changeMonth: true,
+			    changeYear: true,
+			    yearRange: '1975:'+(new Date).getFullYear(),
+			    maxDate:"-1d"
+			  });
+			  }
+
+			});
+		
+	</script>
+</body>
+</html>
